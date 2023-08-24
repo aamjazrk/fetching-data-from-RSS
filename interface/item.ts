@@ -1,4 +1,5 @@
 export interface RSSItemInterface {
+  id: number
   categories: string[];
   'content:encoded': string; 
   'content:encodedSnippet': string; 
@@ -9,4 +10,5 @@ export interface RSSItemInterface {
   link: string;
   pubDate: string;
   title: string;
+  image:string;
 }

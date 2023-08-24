@@ -6,7 +6,7 @@ export const getData = async() => {
         headers:{
             'Content-Type':'application/json'
         }, 
-        next: { revalidate: 3600 }, // one hour
+        next: { revalidate: 36000 }, // one hour
         
     })
     const response = await res.json();
