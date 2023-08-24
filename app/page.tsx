@@ -53,9 +53,9 @@ export default function Home() {
   const getDataRss = async () => {
     let res = await getData();
     console.log("resdata", res);
-    if (res.data) {
+    if (res.data.items) {
       // setData(res.data.items);
-      setItem(res.data);
+      setItem(res.data.items);
     }
   };
 

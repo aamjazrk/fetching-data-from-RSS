@@ -3,7 +3,7 @@ import Parser from "rss-parser";
 import { NextRequest, NextResponse } from "next/server";
 import EventEmitter from "events";
 
-EventEmitter.defaultMaxListeners = 20; // Adjust the value as needed
+EventEmitter.defaultMaxListeners = 20;
 
 // Create an in-memory cache to store fetched data
 const cache = new Map();
@@ -55,29 +55,26 @@ export async function GET(req: NextRequest, res: NextResponse) {
           );
         }
       } else {
-        // Extract the first image source from the 'content:encoded' field for each item
-        // const modifiedData = response.items.map(item => {
-        //   const firstImageSrc = extractFirstImageSrc(item['content:encoded']);
-        //   return { ...item, image: firstImageSrc };
-        // });
-        // Extract the first image source from the 'content:encoded' field for each item
+        // fetch data successful and no cache available
+        // extract image data and set id for each item
         const modifiedData = response.items.map((item, index) => {
           const firstImageSrc = extractFirstImageSrc(item["content:encoded"]);
           return { ...item, id: index + 1, image: firstImageSrc };
         });
+        response.items = modifiedData;
         //clear before store new one
         cache.clear();
 
         // Cache the modified data along with the current timestamp
         cache.set("cachedData", {
-          data: modifiedData,
+          data: response,
           timestamp: Date.now(),
         });
 
         console.log("sent new data");
         return NextResponse.json(
           {
-            data: modifiedData,
+            data: response,
             success: true,
           },
           { status: 200 }
