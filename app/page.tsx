@@ -58,7 +58,7 @@ export default function Home() {
     console.log("Updated item:", items);
   }, [items]);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-3 bg-white">
+    <main className="flex min-h-screen flex-col items-center justify-between p-3 bg-zinc-50">
       <h1 className="text-2xl font-bold mb-4 text-black">Blogs</h1>
       <div className="relative mx-auto  container">
         {/* Carousel */}
