@@ -20,19 +20,16 @@ export default function Home() {
     } else {
       setCurrentSlide(currentSlide - 1);
     }
-    console.log("call handlePrevSlide id: ", currentSlide);
   };
 
   const handleNextSlide = () => {
-    console.log("call handleNextSlide id: ", currentSlide);
     setCurrentSlide((prevSlide) =>
       prevSlide > show.length - 2 ? 0 : prevSlide + 1
-    ); // Ensure maximum is the number of items
+    ); 
   };
 
   const getDataRss = async () => {
     let res = await getData();
-    console.log("resdata", res);
     if (res.data.items) {
       setItem(res.data.items);
       setShow(res.data.items.slice(0, 4));
@@ -111,7 +108,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-
+      {/* item */}
       <div className="w-10/12 grid md:grid-cols-3 gap-5">
         {items &&
           items.map((item) => (
