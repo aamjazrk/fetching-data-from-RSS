@@ -31,7 +31,9 @@ export async function GET(req: NextRequest, res: NextResponse) {
       );
     } else {
       let parser = new Parser();
-      const response = await parser.parseURL("https://life.wongnai.com/feed");
+      const url = process.env.EXTERNAL_FEED_URL || ""
+      console.log(url)
+      const response = await parser.parseURL(url);
       if (!response) {
         if (cachedData) {
           console.log("fetch data unsuccessful, sending cache data");

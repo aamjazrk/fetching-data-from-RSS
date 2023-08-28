@@ -11,7 +11,7 @@ import React from "react";
 
 export default function Home() {
   const [items, setItem] = useState<RSSItemInterface[]>([]);
-  const [currentSlide, setCurrentSlide] = useState(0); // Start with slide 1
+  const [currentSlide, setCurrentSlide] = useState(0); // Start with slide 0
   const [show, setShow] = useState<RSSItemInterface[]>([]);
 
   const handlePrevSlide = () => {
